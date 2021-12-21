@@ -19,20 +19,7 @@ Process to run this project.
 
 
 **Project explaination**
-```
-from bs4 import BeautifulSoup as bs
-import requests
-import pandas as pd
 
-URL = 'https://covid19.who.int/region/searo/country/np'
-r = requests.get(URL)
-soup = bs(r.text, 'html.parser')
-
-confirmed_cases=soup.find_all('span',{'data-id':'metric'})[0].text
-total_death =soup.find_all('span',{'data-id':'metric'})[1].text
-print(f'Total confirmed cases: {confirmed_cases}')
-print(f'Total death cases: {total_death}')
-```
 - import `beautifulsoup` `pandas` and `requests` - `requests` library will request the `URL`, `BeautifulSoup` will parse the `response` object to `HTML` format
 and store it on variable/object.
 
@@ -43,3 +30,18 @@ and store it on variable/object.
 - All the result are stored in variable after using the `find_all()` and `find()` function.
 
 - `pandas` library is used to organize the data in easy way, and also help to import/export on different files like `CSV`,`JSON` and more.
+
+----------------------
+**Output of this project**
+```
+[{'country': 'Spain', 'total_cumulative': '5,422,169'},
+{'country': 'Iran (Islamic Republic of)', 'total_cumulative': '6,170,979'},
+{'country': 'Germany', 'total_cumulative': '6,809,622'},
+{'country': 'France', 'total_cumulative': '8,382,498'}, 
+{'country': 'Turkey', 'total_cumulative': '9,171,119'},
+{'country': 'Russian Federation', 'total_cumulative': '10,241,812'},
+{'country': 'The United Kingdom', 'total_cumulative': '11,361,391'}, 
+{'country': 'Brazil', 'total_cumulative': '22,204,941'}, 
+{'country': 'India', 'total_cumulative': '34,746,838'}, 
+{'country': 'United States of America', 'total_cumulative': '50,415,400'}]
+```
